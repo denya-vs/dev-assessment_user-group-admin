@@ -1,0 +1,14 @@
+# Backend
+backend/symfony/vendor/
+backend/symfony/var/
+
+# Frontend
+frontend/react-app/node_modules/
+frontend/react-app/build/
+
+# Docker
+**/.env
+docker-compose.override.yml
+
+.idea/
+

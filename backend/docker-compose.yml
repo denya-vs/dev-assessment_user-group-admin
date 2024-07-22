@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: .
+    volumes:
+      - ./symfony:/var/www/symfony
+    environment:
+      SYMFONY_ENV: dev
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: usergroupadmin
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
