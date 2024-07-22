@@ -11,14 +11,15 @@ services:
       - SYMFONY_ENV=prod
     networks:
       - app-network
-    expose:
-      - "9000"
+    ports:
+      - "9000:9000"
 
   nginx:
     image: nginx:latest
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./backend/symfony:/var/www/symfony
+      - ./frontend/react-app/build:/var/www/react-app/build
+      - ./backend/symfony/public:/var/www/symfony/public
     ports:
       - "8080:80"
     depends_on:
