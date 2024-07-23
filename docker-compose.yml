@@ -39,6 +39,8 @@ services:
       - db-data:/var/lib/mysql
     networks:
       - app-network
+    ports:
+      - "3307:3306"
 
   react:
     build:
