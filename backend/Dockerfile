@@ -22,10 +22,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/symfony
 
-# Install PHP dependencies
-RUN composer install
-
 # Expose port
 EXPOSE 9000
 
-CMD ["php-fpm"]
+CMD composer install && php-fpm
