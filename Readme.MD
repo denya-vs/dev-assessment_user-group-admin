@@ -16,14 +16,14 @@ Backend (.env.local)
 Copy the env.example file to .env.local in the Symfony backend directory:
 
 ```bash
-cp backend/.env.example backend/.env.local
+cp backend/symfony/.env.example backend/symfony/.env.local
 ```
 
 Frontend (.env)
 Copy the env.example file to .env in the React frontend directory:
 
 ```bash
-cp frontend/.env.example frontend/.env
+cp frontend/react-app/.env.example frontend/react-app/.env
 ```
 ### 3. Build and Start Docker Containers
 
