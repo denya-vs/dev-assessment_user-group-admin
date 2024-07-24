@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY ./react-app/package.json ./react-app/package-lock.json ./
 
-RUN npm audit fix
+RUN npm audit fix --force
 
 RUN npm install
 

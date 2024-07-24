@@ -16,7 +16,7 @@ Backend (.env.local)
 Copy the env.example file to .env.local in the Symfony backend directory:
 
 ```bash
-cp backend/symfony/.env.example backend/symfony/.env.local
+cp backend/symfony/.env.example backend/symfony/.env
 ```
 
 Frontend (.env)
@@ -40,13 +40,13 @@ docker compose exec php bin/console doctrine:migrations:migrate
 ### 5. Load Fixtures
 Load fixtures to populate the database with initial data:
 ```bash
-docker compose exec php bin/console doctrine:fixtures:load
+docker compose exec php bin/console hautelook:fixtures:load
 ```
 
 ### 6. Build Frontend
 Run the frontend build command inside the frontend container:
 ```bash
-docker compose exec frontend npm run build
+docker compose exec react npm run build
 ```
 ### 7.Access the Application
    Frontend: http://localhost:8080
