@@ -31,6 +31,7 @@
         "symfony/yaml": "6.4.*"
     },
     "require-dev": {
+        "hautelook/alice-bundle": "^2.14",
         "symfony/maker-bundle": "^1.60"
     },
     "config": {

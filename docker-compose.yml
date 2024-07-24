@@ -21,7 +21,8 @@ services:
       - ./frontend/react-app/build:/var/www/react-app/build
       - ./backend/symfony/public:/var/www/symfony/public
     ports:
-      - "8080:80"
+      - "8080:8080"
+      - "9001:9001"
     depends_on:
       - php
       - react
