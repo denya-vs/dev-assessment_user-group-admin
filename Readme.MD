@@ -43,7 +43,12 @@ Load fixtures to populate the database with initial data:
 docker compose exec php bin/console doctrine:fixtures:load
 ```
 
-### 6. Access the Application
+### 6. Build Frontend
+Run the frontend build command inside the frontend container:
+```bash
+docker compose exec frontend npm run build
+```
+### 7.Access the Application
    Frontend: http://localhost:8080
 
    Backend (API): http://localhost:9001/api/

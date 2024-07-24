@@ -3,17 +3,12 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\GroupRepository;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Attribute\Groups;
-use Symfony\Component\Serializer\SerializerInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`users`')]
@@ -191,50 +186,5 @@ class User
         }
 
         return $this;
-    }
-
-    /**
-     * @throws \Exception
-     *
-     * @Route("/api/users/{id}", methods={"PATCH"}, defaults={"_api_item_operation_name"="patch"})
-     */
-    public function patch(
-        int $id,
-        Request $request,
-        UserRepository $userRepository,
-        GroupRepository $groupRepository,
-        EntityManagerInterface $entityManager,
-        SerializerInterface $serializer
-    ): JsonResponse
-    {
-        $data = json_decode($request->getContent(), true);
-
-        if (!isset($data['groups']) || !is_array($data['groups'])) {
-            throw new \Exception('Please check your request, missing or incorrect fields found');
-        }
-
-        $user = $userRepository->find($id);
-
-        if (!$user) {
-            throw $this->createNotFoundException('No user found for id ' . $id);
-        }
-
-        $user->getGroups()->clear();
-
-        foreach ($data['groups'] as $groupUrl) {
-            $groupId = (int)trim(parse_url($groupUrl, PHP_URL_PATH), '/');
-            $group = $groupRepository->find($groupId);
-
-            if (!$group) {
-                throw $this->createNotFoundException('No group found for id ' . $groupId);
-            }
-
-            $user->addGroup($group);
-        }
-
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return new JsonResponse($serializer->serialize($user, 'json'), Response::HTTP_OK, [], true);
     }
 }
