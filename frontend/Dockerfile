@@ -4,12 +4,9 @@ WORKDIR /app
 
 COPY ./react-app/package.json ./react-app/package-lock.json ./
 
-RUN npm audit fix --force
-
-RUN npm install
 
 COPY ./react-app ./
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["sh", "-c", "npm install && npm start"]
