@@ -41,7 +41,6 @@ const UserGroupManager = () => {
             return state;
         }, {});
 
-        // Затем обновляем состояние тех чекбоксов, которые соответствуют группам выбранного пользователя
         selectedUser.groups.forEach(groupLink => {
             const groupId = groupLink.split("/").pop();
             userGroupsCheckState[groupId] = true;
@@ -57,7 +56,7 @@ const UserGroupManager = () => {
 
         setUserGroupsCheckState(prevState => ({
             ...prevState,
-            [groupId]: isChecked // true, если группа выбрана, иначе false
+            [groupId]: isChecked
         }));
     };
 
@@ -76,10 +75,8 @@ const UserGroupManager = () => {
                         groups: selectedGroupsUrls,
                     };
 
-                    // Обновляем selectedUser
                     setSelectedUser(updatedSelectedUser);
 
-                    // Обновляем список users, чтобы включить в него обновленного пользователя.
                     const updatedUsers = users.map(user =>
                         user.userid === selectedUser.userid ? updatedSelectedUser : user
                     );
