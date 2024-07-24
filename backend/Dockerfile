@@ -19,11 +19,11 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install PHP dependencies
-RUN composer install
-
 # Set working directory
 WORKDIR /var/www/symfony
+
+# Install PHP dependencies
+RUN composer install
 
 # Expose port
 EXPOSE 9000
