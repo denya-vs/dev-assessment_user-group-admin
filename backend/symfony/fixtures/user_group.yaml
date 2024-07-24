@@ -1,0 +1,17 @@
+App\Entity\User:
+  user_{1..10}:
+    email: '<email()>'
+    name: '<firstName()> <lastName()>'
+    phone: '<phoneNumber()>'
+    created_by: '<numberBetween(1,100)>'
+    created_date: '<dateTimeBetween("-1 years", "now")>'
+    updated_by: '<numberBetween(1,100)>'
+    updated_date: '<dateTimeBetween("-1 years", "now")>'
+
+App\Entity\Group:
+  group_{1..5}:
+    groupname: '<word()>'
+    created_by: '<numberBetween(1,100)>'
+    created_date: '<dateTimeBetween("-1 years", "now")>'
+    updated_by: '<numberBetween(1,100)>'
+    updated_date: '<dateTimeBetween("-1 years", "now")>'
